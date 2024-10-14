@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import WorkflowCanvas from './WorkflowCanvas';
+import { WorkflowProvider } from './context/WorkflowContext';
+import runWorkflow from './runWorkflow';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WorkflowProvider>
+      <div className="App">
+        <h1>LLM Workflow Builder</h1>
+        <WorkflowCanvas />
+        <button onClick={runWorkflow} className="p-2 mt-4 bg-blue-500 text-white">
+          Run Workflow
+        </button>
+      </div>
+    </WorkflowProvider>
   );
-}
+};
 
 export default App;
